@@ -1,0 +1,7 @@
+Metadata-Version: 2.1
+Name: dbcompound
+Version: 1.0.0
+Summary: A Python package for working with the COMPOUND databases of FactSage software
+Author: Evgenii Nekhoroshev
+Author-email: Evgenii Nekhoroshev <evgnekhoroshev@gmail.com>
+Requires-Python: <3.12,>=3.9
