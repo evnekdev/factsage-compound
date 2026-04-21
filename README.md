@@ -1,7 +1,7 @@
 # dbcompound
 
 `dbcompound` is a Python package for reading, inspecting, and editing FactSage compound database (`.CDB`) files.
-
+<!---JW: I have one question is there. When will the sln file be ready?--->
 It parses the fixed-width binary chunk format used by FactSage compound databases and exposes Python objects for:
 
 - loading a database into memory
