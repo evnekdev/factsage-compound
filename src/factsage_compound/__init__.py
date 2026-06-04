@@ -26,3 +26,5 @@ from factsage_compound.factsage_compound import CHUNK_TYPE_COMMENT
 from factsage_compound.factsage_compound import CHUNK_TYPE_KAPPA
 
 from factsage_compound.factsage_compound import DTYPES
+
+from factsage_compound.excel import factsage_list_compounds, factsage_compare_compounds
