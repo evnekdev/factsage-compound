@@ -12,7 +12,7 @@ version = '1.0.0',
 author='Evgenii Nekhoroshev',
 author_email='evgnekhoroshev@gmail.com',
 description='A Python package for working with the COMPOUND databases of FactSage software',
-packages=['factsage-compound'],
-package_dir={'factsage-compound': 'src'},
+packages=['factsage_compound'],
+package_dir={'factsage_compound': 'src/factsage_compound'},
 install_requires=install_requires.get(sys.version_info.minor)
 )

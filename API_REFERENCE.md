@@ -1,8 +1,8 @@
-# API reference draft for `dbcompound`
+# API reference draft for `factsage-compound`
 
 This draft is organized around the public objects currently exported by the package.
 
-## Module: `dbcompound`
+## Module: `factsage-compound`
 
 ### Public classes
 
@@ -121,7 +121,7 @@ Binary dtype map:
 ## Recommended pdoc command
 
 ```bash
-PYTHONPATH=src pdoc -o docs dbcompound
+PYTHONPATH=src pdoc -o docs factsage-compound
 ```
 
 ## Recommended docstring priorities

@@ -1,6 +1,6 @@
 /build
 /dist
 /doc
-/dbcompound.egg-info
+/factsage-compound.egg-info
 *.bin
 *.pyc

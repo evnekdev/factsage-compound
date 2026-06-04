@@ -1,6 +1,6 @@
-# dbcompound
+# factsage-compound`
 
-`dbcompound` is a Python package for reading, inspecting, and editing FactSage compound database (`.CDB`) files.
+`factsage-compound` is a Python package for reading, inspecting, and editing FactSage compound database (`.CDB`) files.
 
 It parses the fixed-width binary chunk format used by FactSage compound databases and exposes Python objects for:
 
@@ -40,7 +40,7 @@ pip install numpy==1.23.* pyparsing==3.1.*
 ## Quick start
 
 ```python
-from dbcompound import Database
+from factsage_compound` import Database
 
 # Load an existing FactSage compound database
 db = Database("SENDBASE.CDB")
