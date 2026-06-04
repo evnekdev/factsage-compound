@@ -1,1 +1,1 @@
-import dbcompound
+import factsage_compound
