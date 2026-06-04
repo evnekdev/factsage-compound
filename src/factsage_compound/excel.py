@@ -1,4 +1,7 @@
 # excel.py
+import xlwings as xw
+import pandas as pd
+import factsage_compound.compare
 
 
 @xw.func(category=EXCEL_FUNCTION_GROUP)

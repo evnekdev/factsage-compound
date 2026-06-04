@@ -198,13 +198,13 @@ pip install pdoc
 Generate HTML docs:
 
 ```bash
-PYTHONPATH=src pdoc -o docs dbcompound
+PYTHONPATH=src pdoc -o docs factsage-compound
 ```
 
 Serve locally:
 
 ```bash
-PYTHONPATH=src pdoc -p 8000 dbcompound
+PYTHONPATH=src pdoc -p 8000 factsage-compound
 ```
 
 ## Notes and caveats

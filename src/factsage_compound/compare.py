@@ -1,5 +1,5 @@
 # compare.py
-
+import factsage_compound as cmp
 import xlwings as xw
 import pandas as pd
 import numpy as np
