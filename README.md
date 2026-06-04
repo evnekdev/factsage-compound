@@ -59,17 +59,17 @@ You can download an xlsm templates from <TODO>.
 
 If you create your own xlsm book from scratch, you will need an xlwings.conf sheet with the following contents:
 
-| A | B |
-|---|---|
-| Interpreter_Win | $PYTHONPATH\python.exe |
-| Interpreter_Mac |                        |
-| PYTHONPATH      |                        |
-| Conda Path      |                        |
-| Conda Env       |                        |
-| UDF Modules     | factsage-compound      |
-| Debug UDFs      | FALSE                  |
-| Use UDF Server  | TRUE                   |
-| Show Console    | TRUE                   |
+| | A | B |
+|---|---|---|
+|1| Interpreter_Win | $PYTHONPATH\python.exe |
+|2| Interpreter_Mac |                        |
+|3| PYTHONPATH      |                        |
+|4| Conda Path      |                        |
+|5| Conda Env       |                        |
+|6| UDF Modules     | factsage-compound      |
+|7| Debug UDFs      | FALSE                  |
+|8| Use UDF Server  | TRUE                   |
+|9| Show Console    | TRUE                   |
 
 
 ## Quick start (pure Python)
