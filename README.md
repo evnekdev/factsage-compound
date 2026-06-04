@@ -43,7 +43,19 @@ Or install dependencies manually for development:
 pip install numpy==1.23.* pyparsing==3.1.*
 ```
 
-## Quick start
+## Quick start (Excel interface, database comparison)
+
+To use database comparison functions from Excel, you need to install xlwings using :
+
+```cmd
+pip install xlwings
+```
+
+Then locate the `xlwings` addin in `$PYTHONPATH\Lib\site-packages\xlwings\addin` through Excel File -> Options -> Add-ins (Manage Excel Addins, Go) interface. If everything goes ok, an `xlwings` tab appears in the top Excel Ribbon.
+
+
+
+## Quick start (pure Python)
 
 ```python
 from factsage_compound import Database
