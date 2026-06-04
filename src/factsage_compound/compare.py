@@ -1,6 +1,5 @@
 # compare.py
 import factsage_compound as cmp
-import xlwings as xw
 import pandas as pd
 import numpy as np
 
@@ -141,23 +140,6 @@ def _attributes_compound(compound):
         for key in output:
             output[key] += output_[key]
     return output
-
-def factsage_list_compounds(database, trigger=None):
-    database = cmp.Database(database)
-    output = _attributes_empty()
-    for compound in database.compounds:
-        output_ = _attributes_compound(compound)
-        for key in output:
-            output[key] += output_[key]
-    df = pd.DataFrame({'formula': output['formulas'], 'name': output['names'], 'phase': output['phases'], 'H298': output['enthalpies'], 'S298': output['entropies'],
-                       'enthalpy of transition': output['enthalpies_trans'], 'transition temperature': output['temp_trans'], 'T(range) min, K': output['temp_min'],
-                       'T(range) max, K': output['temp_max'], 'CP(val)[1]': output['cp_coeff0'], 'CP(pow)[1]': output['cp_power0'], 'CP(val)[2]': output['cp_coeff1'],
-                       'CP(pow)[2]': output['cp_power1'], 'CP(val)[3]': output['cp_coeff2'], 'CP(pow)[3]': output['cp_power2'], 'CP(val)[4]': output['cp_coeff3'],
-                       'CP(pow)[4]': output['cp_power3'], 'CP(val)[5]': output['cp_coeff4'], 'CP(pow)[5]': output['cp_power4'], 'CP(val)[6]': output['cp_coeff5'],
-                       'CP(pow)[6]': output['cp_power5'], 'CP(val)[7]': output['cp_coeff6'], 'CP(pow)[7]': output['cp_power6'], 'CP(val)[8]': output['cp_coeff7'],
-                       'CP(pow)[8]': output['cp_power7']})
-    #df = pd.DataFrame({'formula': formulas_0, 'name': names_0, 'phase': phases_0})
-    return df
 
 def _fill_with_nans(input):
     output = {}
