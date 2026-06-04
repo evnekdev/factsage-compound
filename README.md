@@ -1,4 +1,4 @@
-# factsage-compound`
+# factsage-compound
 
 `factsage-compound` is a Python package for reading, inspecting, and editing FactSage compound database (`.CDB`) files.
 
