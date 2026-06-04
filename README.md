@@ -55,7 +55,7 @@ Then locate the `xlwings` addin in `$PYTHONPATH\Lib\site-packages\xlwings\addin`
 
 In File -> Options -> Trust Center -> Trust Center Settings -> Macro Settings set "Enable VBA macros" toggle button and "Enable Excel 4.0 macros when VBA macros are enabled" and "Trust access to the VBA project object model" ticks.
 
-You can download an xlsm templates from <TODO>.
+You can download an xlsm templates from [Excel Template](examples/Template.xlsm).
 
 If you create your own xlsm book from scratch, you will need an xlwings.conf sheet with the following contents:
 
