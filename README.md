@@ -124,7 +124,7 @@ Useful attributes:
 ### Find a phase by ChemApp label
 
 ```python
-from dbcompound import Database
+from factsage_compound import Database
 
 db = Database("SENDBASE.CDB")
 phase = db.find_phase_by_chemapp_name("FeO_wustite(s)")
@@ -137,7 +137,7 @@ if phase:
 ### Update thermodynamic values and save
 
 ```python
-from dbcompound import Database
+from factsage_compound import Database
 
 db = Database("SENDBASE.CDB")
 compound = db.find_compound_by_formula("FeO")
