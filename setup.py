@@ -3,9 +3,6 @@ import sys
 
 from setuptools import setup
 
-install_requires = {9: ["numpy==1.23.*", "pyparsing==3.1.*"],
-                   11: ["numpy==1.23.*", "pyparsing==3.1.*"]}
-
 setup(
 name='factsage-compound',
 version = '1.0.0',

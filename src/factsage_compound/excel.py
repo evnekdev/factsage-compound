@@ -3,6 +3,7 @@ import xlwings as xw
 import pandas as pd
 from factsage_compound import compare
 
+EXCEL_FUNCTION_GROUP = "FactSage Compound"
 
 @xw.func(category=EXCEL_FUNCTION_GROUP)
 @xw.arg('database', doc="")
