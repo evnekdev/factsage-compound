@@ -53,6 +53,23 @@ pip install xlwings
 
 Then locate the `xlwings` addin in `$PYTHONPATH\Lib\site-packages\xlwings\addin` through Excel File -> Options -> Add-ins (Manage Excel Addins, Go) interface. If everything goes ok, an `xlwings` tab appears in the top Excel Ribbon.
 
+In File -> Options -> Trust Center -> Trust Center Settings -> Macro Settings set "Enable VBA macros" toggle button and "Enable Excel 4.0 macros when VBA macros are enabled" and "Trust access to the VBA project object model" ticks.
+
+You can download an xlsm templates from <TODO>.
+
+If you create your own xlsm book from scratch, you will need an xlwings.conf sheet with the following contents:
+
+| A | B |
+|---|---|
+| Interpreter_Win | $PYTHONPATH\python.exe |
+| Interpreter_Mac |                        |
+| PYTHONPATH      |                        |
+| Conda Path      |                        |
+| Conda Env       |                        |
+| UDF Modules     | factsage-compound      |
+| Debug UDFs      | FALSE                  |
+| Use UDF Server  | TRUE                   |
+| Show Console    | TRUE                   |
 
 
 ## Quick start (pure Python)
