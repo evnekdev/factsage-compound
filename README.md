@@ -40,7 +40,7 @@ pip install numpy==1.23.* pyparsing==3.1.*
 ## Quick start
 
 ```python
-from factsage_compound` import Database
+from factsage_compound import Database
 
 # Load an existing FactSage compound database
 db = Database("SENDBASE.CDB")
