@@ -66,7 +66,7 @@ If you create your own xlsm book from scratch, you will need an xlwings.conf she
 |3| PYTHONPATH      |                        |
 |4| Conda Path      |                        |
 |5| Conda Env       |                        |
-|6| UDF Modules     | factsage-compound      |
+|6| UDF Modules     | factsage_compound      |
 |7| Debug UDFs      | FALSE                  |
 |8| Use UDF Server  | TRUE                   |
 |9| Show Console    | TRUE                   |
