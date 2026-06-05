@@ -184,18 +184,3 @@ if phase and not phase.has_transition():
 
  db.save()
 ```
-
-## Notes and caveats
-
-- The parser assumes the fixed-width 256-byte chunk layout used by FactSage CDB files.
-- Saving writes back to the original file path, so keep a backup of the source `.CDB` file.
-- Several low-level constants and NumPy dtypes are public, but most users will work through the object wrappers.
-- Some debug-style prints and TODO comments still exist in the code and may be worth cleaning up before a public release.
-
-## Suggested next improvements
-
-- Add docstrings to every public property for richer generated docs
-- Add type hints for public methods and return values
-- Replace generic `Exception` raises with more specific exception types
-- Add tests using small fixture databases
-- Add packaging metadata such as a license and project URLs
