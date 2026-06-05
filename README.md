@@ -1,3 +1,9 @@
+# Wiki project for Compound Database files (not part of the official FactSage distribution, written by Dr Evgenii Nekhoroshev)
+
+The detailed documentation on the internal workings of the FactSage Compound Database file format is located at:
+
+[FactSage Compound Database Project](https://evnekdev.github.io/factsage-compound-docs/)
+
 # factsage-compound
 
 `factsage-compound` is a Python package for reading, inspecting, and editing FactSage Compound Database (`.CDB`) files.
@@ -9,12 +15,6 @@ It parses the fixed-width binary chunk format used by FactSage compound database
 - inspecting thermodynamic values and heat-capacity ranges
 - editing selected values in memory
 - saving the modified binary back to disk
-
-## Wiki project for Compound Database files (not part of the official FactSage distribution, written by Dr Evgenii Nekhoroshev)
-
-The detailed documentation on the internal workings of the FactSage Compound Database file format is located at:
-
-[FactSage Compound Database Project](https://evnekdev.github.io/factsage-compound-docs/)
 
 ## Features
 
