@@ -23,35 +23,33 @@ The detailed documentation on the internal workings of the FactSage Compound Dat
 - Supports lookup by formula, compound name, and ChemApp-style phase labels
 - Preserves binary layout so modified databases can be written back to disk
 
-## Requirements
+## Installation from PyPI
 
-- Python 3.9 to 3.11
-- `numpy==1.23.*`
-- `pyparsing==3.1.*`
+From a command window, run
 
-## Installation
-
-From a local checkout:
-
-```bash
-pip install .
+```cmd
+pip install factsage-compound
 ```
 
-Or install dependencies manually for development:
+## Installation from the repository (if the PyPI distribution not available)
 
-```bash
-pip install numpy==1.23.* pyparsing==3.1.*
+To install `factsage-compound` from the GitHub repository at [factsage-compound](https://github.com/evnekdev/factsage-compound) use
+
+```cmd
+git clone https://github.com/evnekdev/factsage-compound
+```
+
+and later run the installation from inside the cloned directory using `poetry` tool (```pip install poetry```):
+
+```cmd
+poetry install
 ```
 
 ## Quick start (Excel interface, database comparison)
 
-To use database comparison functions from Excel, you need to install xlwings using :
+If you already installed `factsage-compound`, `xlwings` package should be already installed as a requirement.
 
-```cmd
-pip install xlwings
-```
-
-Then locate the `xlwings` addin in `$PYTHONPATH\Lib\site-packages\xlwings\addin` through Excel File -> Options -> Add-ins (Manage Excel Addins, Go) interface. If everything goes ok, an `xlwings` tab appears in the top Excel Ribbon.
+Locate the `xlwings` addin in `$PYTHONPATH\Lib\site-packages\xlwings\addin` through Excel File -> Options -> Add-ins (Manage Excel Addins, Go) interface. If everything goes ok, an `xlwings` tab appears in the top Excel Ribbon.
 
 In File -> Options -> Trust Center -> Trust Center Settings -> Macro Settings set "Enable VBA macros" toggle button and "Enable Excel 4.0 macros when VBA macros are enabled" and "Trust access to the VBA project object model" ticks.
 
@@ -183,28 +181,6 @@ if phase and not phase.has_transition():
     phase.entropy = phase.entropy + 0.1
 
  db.save()
-```
-
-## Generating API docs with pdoc
-
-The package is a good fit for `pdoc`, especially after adding proper module, class, and method docstrings.
-
-Install pdoc:
-
-```bash
-pip install pdoc
-```
-
-Generate HTML docs:
-
-```bash
-PYTHONPATH=src pdoc -o docs factsage-compound
-```
-
-Serve locally:
-
-```bash
-PYTHONPATH=src pdoc -p 8000 factsage-compound
 ```
 
 ## Notes and caveats
