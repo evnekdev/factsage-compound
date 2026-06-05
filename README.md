@@ -33,7 +33,7 @@ pip install factsage-compound
 
 ## Installation from the repository (if the PyPI distribution not available)
 
-To install `factsage-compound` from the GitHub repository at [factsage-compound](https://github.com/evnekdev/factsage-compound) use
+To install `factsage-compound` from the GitHub repository at [factsage-compound](https://github.com/evnekdev/factsage-compound), use
 
 ```cmd
 git clone https://github.com/evnekdev/factsage-compound
@@ -44,6 +44,8 @@ and later run the installation from inside the cloned directory using `poetry` t
 ```cmd
 poetry install
 ```
+
+`poetry` tool automatically builds a wheel and installs it into your current Python directory (a valid Python installation must exist on your computer, of course).
 
 ## Quick start (Excel interface, database comparison)
 
