@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "factsage-compound"
-version = "0.1.0"
+version = "0.1.1"
 description = "Tools for reading and working with FactSage compound database files."
 authors = ["Eugene Nekhoroshev <evgnekhoroshev@gmail.com>"]
 homepage = "https://github.com/evnekdev/factsage-compound"
