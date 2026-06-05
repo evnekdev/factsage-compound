@@ -1,1 +1,0 @@
-import factsage_compound
