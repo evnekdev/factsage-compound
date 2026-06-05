@@ -4,3 +4,4 @@
 /factsage-compound.egg-info
 *.bin
 *.pyc
+/examples/*.IW*
