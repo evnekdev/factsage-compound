@@ -17,6 +17,7 @@ dbtype_db_chunk       = np.dtype([('chunk_id', np.uint8), # (0, 0)
                                   ('padding3', 'B', 136),
                                   ('unknown2', 'B', 12)
                                   ])
+                                  
 ### Repeated pattern across multiple chunks describing the same compound
 dbtype_header         = np.dtype([('element_id', np.uint8, 7),     # row 0
                                   ('padding_coeff', 'B'),          # row 0
@@ -27,6 +28,7 @@ dbtype_header         = np.dtype([('element_id', np.uint8, 7),     # row 0
                                   ('timestamp', 'B', 8),           # row 1
                                   ('unknown1', 'B',2)              # row 1
                                   ])                             #
+                                  
 ### Compound chunk
 dbtype_compound_chunk = np.dtype([('chunk_id', np.uint8),
                                   ('header', dbtype_header),
@@ -40,6 +42,7 @@ dbtype_compound_chunk = np.dtype([('chunk_id', np.uint8),
                                   ('coeff_real', np.float64, 7),
                                   ('padding_final', 'B', 24)
                                   ])
+                                  
 ### Phase chunk of type I (H, S)
 dbtype_phase_chunk_1 = np.dtype([('chunk_id', np.uint8),
                                  ('header', dbtype_header),
@@ -58,6 +61,7 @@ dbtype_phase_chunk_1 = np.dtype([('chunk_id', np.uint8),
                                  ('phase_name', 'S40'),
                                  ('padding2', 'B', 80)
                                  ])
+                                 
 ### Phase chunk if type II (Htrans + Ttrans)
 dbtype_phase_chunk_2 = np.dtype([('chunk_id', np.uint8),
                                  ('header', dbtype_header),
@@ -76,6 +80,7 @@ dbtype_phase_chunk_2 = np.dtype([('chunk_id', np.uint8),
                                  ('phase_name', 'S40'),
                                  ('padding2', 'B', 80)
                                  ])
+                                 
 ### CP range chunk (there are several ids corresponding to it, but I didn't find any significant different)
 dbtype_cp_chunk      = np.dtype([('chunk_id', np.uint8),
                                 ('header', dbtype_header),
@@ -89,13 +94,15 @@ dbtype_cp_chunk      = np.dtype([('chunk_id', np.uint8),
                                 ('power', np.float64, 8),
                                 ('padding_remaining', 'B', 56)
                                 ])
+                                
 ### Compound comment (in case it is long, comment chunks are stacked one after another)
 dbtype_comment_chunk = np.dtype([('chunk_id', np.uint8),
                                  ('header', dbtype_header),
                                  ('comment', 'S80'),
                                  ('padding_remaining', 'B', 144)
                                  ])
-### Extended physical properties chukn
+                                 
+### Extended physical properties chunk
 dbtype_kappa_chunk   = np.dtype([('chunk_id', np.uint8),
                                  ('header', dbtype_header),
                                  ('t_min', np.float64),
@@ -121,7 +128,7 @@ pattern_chemapp_compound = pp.Word(pp.alphanums).setResultsName('formula') \
                            + pp.Group(pp.Literal('s')|pp.Literal('l')|pp.Literal('g')|pp.Literal('aq')).setResultsName('state', listAllMatches=False).setParseAction(lambda s, loc, toks: toks[0][0]) \
                            + pp.Word(pp.nums).setResultsName('index') \
                            + pp.Literal(')').suppress()
-#pattern_chemapp_compound_reverse = pp.Literal(')').suppress() + pp.Word(pp.nums).setResultsName('index').setParseAction(lambda s, loc, toks: toks[::-1]) + pp.pp.Literal('(') + pp.Group(pp.Literal('s')|pp.Literal('l')|pp.Literal('g')|pp.Literal('aq')).setResultsName('state', listAllMatches=False).setParseAction(lambda s, loc, toks: toks[0][0][::-1]) +
+
 
 """
 CHUNK_TYPE_DB = b'x\09'
@@ -203,22 +210,16 @@ class Database:
         self.compounds = []
         self._load()
         self._parse()
-        #self._parse_compounds()
 
     def _load(self):
         """Read the raw 256-byte chunks from disk into a writable NumPy array."""
         with open(self.database_file, 'rb') as fh:
             self.chunks = np.frombuffer(fh.read(), dtype=dbtype_chunk).copy() # the original byte array, created by fh.read(), is immutable and cannot be modified, so we are creating a copy
-            #print(f"flags = {self.chunks.flags}")
             self.chunks.setflags(write=1)
-            #vw = self.chunks[0].view(dtype=dbtype_db_chunk)
-            #print(f"{vw}")
 
     def _parse(self):
         """Parse the database header and all compound records."""
         self.chunk_header = self.chunks[0].view(dtype=dbtype_db_chunk)
-        #if self.chunk_header['magic'] != b'CMPD':
-        #    raise Exception("Wrong database format")
         self.cursor = 1
         while self.cursor < self.chunks.shape[0]:
             self._parse_compound()
@@ -297,22 +298,16 @@ class Compound:
         """Attach heat-capacity and kappa chunks to their owning phases."""
         for k in range(self.database.cursor, self.database.chunks.shape[0]):
             if self.database.chunks[self.database.cursor]['chunk_id'] == CHUNK_TYPE_CP1:
-                #print(f"range type 1 for {self}")
                 chunk = self.database.chunks[self.database.cursor].view(dtype=dbtype_cp_chunk)
             elif self.database.chunks[self.database.cursor]['chunk_id'] == CHUNK_TYPE_CP2:
-                #print(f"range type 2 for {self}")
                 chunk = self.database.chunks[self.database.cursor].view(dtype=dbtype_cp_chunk)
             elif self.database.chunks[self.database.cursor]['chunk_id'] == CHUNK_TYPE_CP3:
-                #print(f"range type 3 for {self}")
                 chunk = self.database.chunks[self.database.cursor].view(dtype=dbtype_cp_chunk)
             elif self.database.chunks[self.database.cursor]['chunk_id'] == CHUNK_TYPE_CP4:
-                #print(f"range type 4 for {self}")
                 chunk = self.database.chunks[self.database.cursor].view(dtype=dbtype_cp_chunk)
             elif self.database.chunks[self.database.cursor]['chunk_id'] == CHUNK_TYPE_CP5:
-                print(f"range type 5 for {self}")
                 chunk = self.database.chunks[self.database.cursor].view(dtype=dbtype_cp_chunk)
             elif self.database.chunks[self.database.cursor]['chunk_id'] == CHUNK_TYPE_KAPPA:
-                print(f"kappa for {self}")
                 chunk = self.database.chunks[self.database.cursor].view(dtype=dbtype_kappa_chunk)
             else:
                 return
@@ -350,14 +345,6 @@ class Compound:
     @property
     def formula(self):
         return self.chunk['formula_name'].decode('ascii').strip()
-
-## WE SHOULDN'T change the formula string (causes bugs)
-#    @formula.setter
-#    def formula(self, value):
-#        if len(value) > 40:
-#            raise Exception("Formula name cannot exceed 40 characters.")
-#        self.chunk['formula_name'] = value.encode()
-
 
     @property
     def coefficients_real(self):
@@ -401,7 +388,6 @@ class Phase:
         self.database = compound.database
         self.ranges = []
         self.kappas = []
-        #self._load_cp_ranges()
 
     def _load_cp_ranges(self):
         elements = self.chunk['header']['element_id']
@@ -418,8 +404,6 @@ class Phase:
             else:
                 continue
             if (chunk['phase_id_raw'] == phase_id_raw) and np.array_equal(chunk['header']['element_id'], elements) and np.array_equal(chunk['header']['element_coeff'], coeffs) and (chunk['header']['charge_raw'] == charge_raw):
-                #print(f"Found a match for {self.chunk['phase_name']}")
-                #print(f"{chunk['header']['element_coeff']}, {coeffs}")
                 self.ranges.append(Range(chunk, self))
 
     def has_transition(self):
@@ -433,7 +417,6 @@ class Phase:
             if self.compound.chunk['unit_energy'] == 0:
                 value *= 4.184
             return value
-            #return self.chunk['enthalpy']
         else:
             raise Exception("Not supported if a transition is defined")
 
@@ -616,24 +599,3 @@ class Range:
     def __repr__(self):
         return self.__str__()
 
-
-
-
-
-
-
-
-
-"""
-filename = r'c:\_WORK\Code\dbcompound\phase1.bin'
-with open(filename, 'rb') as fh:
-    content = fh.read()
-    #compound = np.frombuffer(content, dtype=dbtype_compound_chunk, offset=1)
-    #print(f"{compound}")
-    phase = np.frombuffer(content, dtype=dbtype_phase_chunk_1, offset=1)
-    print(f"{phase}")
-"""
-
-#dbase = Database(r'c:\_WORK\Code\dbcompound\SENDBASE.CDB')
-#print(f"{dbase.list_compound_names()}")
-#print(f"{dbase.list_phase_indices()}")
